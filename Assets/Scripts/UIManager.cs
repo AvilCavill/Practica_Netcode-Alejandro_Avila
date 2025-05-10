@@ -18,6 +18,11 @@ public class UIManager : Singleton<UIManager>
    
    [SerializeField] 
    private TextMeshProUGUI playersInGameText;
+   
+   [SerializeField] 
+   private Button executePhysicsButton;
+
+   private bool hasServerStarted;
 
    private void Awake()
    {
@@ -65,6 +70,21 @@ public class UIManager : Singleton<UIManager>
          {
             Logger.Instance.LogError("Client could not be started...");
          }
+      });
+      
+      NetworkManager.Singleton.OnServerStarted += () =>
+      {
+            NetworkObjectPool.Instance.InitializePool();
+      };
+      
+      executePhysicsButton.onClick.AddListener(() =>
+      {
+         if (!hasServerStarted)
+         {
+            Logger.Instance.LogWarning("Server is not started...");
+         }
+         
+         SpawnerControl.Instance.SpawnObjects();
       });
    }
 }

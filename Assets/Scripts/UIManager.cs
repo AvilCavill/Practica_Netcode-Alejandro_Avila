@@ -19,6 +19,9 @@ public class UIManager : Singleton<UIManager>
    [SerializeField] 
    private TextMeshProUGUI playersInGameText;
    
+   [SerializeField]
+   private TMP_InputField joinCodeInput;
+   
    [SerializeField] 
    private Button executePhysicsButton;
 
@@ -36,8 +39,10 @@ public class UIManager : Singleton<UIManager>
 
    private void Start()
    {
-      startHostButton.onClick.AddListener(() =>
+      startHostButton.onClick.AddListener(async () =>
       {
+         if (RelayManager.Instance.isRelayEnabled)
+            await RelayManager.Instance.SetupRelay();
          if (NetworkManager.Singleton.StartHost())
          {
             Logger.Instance.LogInfo("Host started...");
@@ -60,8 +65,10 @@ public class UIManager : Singleton<UIManager>
          }
       });
       
-      startClientButton.onClick.AddListener(() =>
+      startClientButton.onClick.AddListener(async() =>
       {
+         if (RelayManager.Instance.isRelayEnabled && !string.IsNullOrEmpty(joinCodeInput.text))
+            await RelayManager.Instance.JoinRelay(joinCodeInput.text);
          if (NetworkManager.Singleton.StartClient())
          {
             Logger.Instance.LogInfo("Client started...");

@@ -60,8 +60,9 @@ public class RelayManager : Singleton<RelayManager>
         return relayHostData;
     }
 
-    public async Task<RelayJoinData> JoinRelay(string joinCode)
+    public async Task<RelayJoinData> JoinRelay(string code)
     {
+        string joinCode = code.Trim();
         InitializationOptions options = new InitializationOptions()
             .SetEnvironmentName(environment);
         
@@ -82,6 +83,7 @@ public class RelayManager : Singleton<RelayManager>
             AllocationIDBytes = allocation.AllocationIdBytes,
             IPv4Address = allocation.RelayServer.IpV4,
             ConnectionData = allocation.ConnectionData,
+            JoinCode = joinCode
         };
         
         Transport.SetRelayServerData(relayJoinData.IPv4Address, relayJoinData.Port, relayJoinData.AllocationIDBytes,

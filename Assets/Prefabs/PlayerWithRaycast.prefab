@@ -1150,7 +1150,7 @@ GameObject:
   - component: {fileID: 3509876318352018509}
   - component: {fileID: 1963102626144227543}
   m_Layer: 0
-  m_Name: Player
+  m_Name: PlayerWithRaycast
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

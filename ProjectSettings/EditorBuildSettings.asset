@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/BasicMultiplayer.unity
+    path: Assets/Scenes/BasicMultiplayerClientWithFollowCamera.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 0
+    path: Assets/Scenes/BasicMultiplayerClientBall.unity
+    guid: 9f32a827f966e7c4887bc6dc289263cf
+  - enabled: 0
+    path: Assets/Scenes/BasicMultiplayer.unity
+    guid: cea8067e74d805c4a995fd81688903ef
   m_configObjects: {}

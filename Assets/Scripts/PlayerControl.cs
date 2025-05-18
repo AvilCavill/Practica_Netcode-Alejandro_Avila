@@ -12,7 +12,9 @@ public class PlayerControl : NetworkBehaviour
     {
         Idle,
         Walk,
-        ReverseWalk
+        ReverseWalk,
+        Punch,
+        Run
     }
 
     [SerializeField] 

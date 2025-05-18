@@ -88,7 +88,7 @@ public class UIManager : Singleton<UIManager>
       {
          if (!hasServerStarted)
          {
-            // Logger.Instance.LogWarning("Server is not started...");
+             Logger.Instance.LogWarning("Server is not started...");
          }
          
          SpawnerControl.Instance.SpawnObjects();
